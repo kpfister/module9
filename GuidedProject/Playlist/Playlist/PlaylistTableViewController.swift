@@ -54,17 +54,29 @@ class PlaylistTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let playlist = PlaylistController.sharedInstance.playlists[indexPath.row]
-            PlaylistController.sharedInstance.deletePlaylist(playlist)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            let playlist = PlaylistController.sharedInstance.playlists[indexPath.row] // calls?
+            PlaylistController.sharedInstance.deletePlaylist(playlist) // What do i want to delete? (playlist)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade) // now i need to delete the row
         }
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation // below is a method
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toSongList", let songListTVC = segue.destinationViewController as? SongListTableViewController, let playlistCell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(playlistCell) {
+        if segue.identifier == "toSongList", let songListTVC = segue.destinationViewController as?
+            SongListTableViewController, let playlistCell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPathForCell(playlistCell) {
             songListTVC.playlist = PlaylistController.sharedInstance.playlists[indexPath.row]
         }
     }
 }
+
+
+
+// if seque.identifer - means this is the seque we are using
+// segue. destinationVC - means where the segue is going to to
+// as? is what casts it as SongListTableVC
+
+// let indexpath = tableView
+
+

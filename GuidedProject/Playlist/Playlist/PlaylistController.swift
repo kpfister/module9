@@ -14,11 +14,21 @@ class PlaylistController {
     
     var playlists = [Playlist]()
     
+    
+    // CRUD
+    //Create
     func addPlaylist(name: String) {
         let playlist = Playlist(name: name, songs: [])
         playlists.append(playlist)
     }
     
+    //Retrieve
+    
+    
+    
+    
+    
+    //Delete
     func deletePlaylist(playlist: Playlist) {
         guard let indexOfPlaylist = playlists.indexOf(playlist) else {
             return
@@ -35,5 +45,10 @@ class PlaylistController {
             return
         }
         playlist.songs.removeAtIndex(indexOfSong)
+        
     }
+    
+    // saves to NSUser Defaults
+    
+    
 }
